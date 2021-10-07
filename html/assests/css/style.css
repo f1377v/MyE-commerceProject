@@ -5,6 +5,10 @@
   list-style: none;
   box-sizing: border-box;  /*includes the padding and border in an element's total width and height*/
 }
+html {
+  line-height: 1.15;
+  height: 100%;
+}
 body{
   font-family: montserrat;
 }
@@ -102,6 +106,20 @@ a.active,a:hover{
     left: 0;
   }
 }
+  .Results {
+    margin: auto;
+    width: 60%;
+    margin-top: 50px;
+  }
+  .Results img{
+    max-width: 100%;
+  }
+  .Reviews{
+    margin-top: 30px;
+  }
+  .Reviews p{
+    border-style: hidden hidden solid;
+  }
   .footer-basic {
     padding:40px 0;
     background-color:#ffffff;
