@@ -134,8 +134,6 @@ html {
     min-width: 180px;
   }
   
-  
-  
   .reviewsite form .submitform .dataform.textbox03 {
     width: 180px;
     margin-right: 0;
@@ -163,6 +161,67 @@ html {
     background: #2d62d3;
   }
   
+  .reviewsite form .signupform {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 50px 50px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .reviewsite form .signupform .dataform {
+    margin-right: 20px;
+    height: 80px;
+  }
+  
+  .reviewsite form .signupform .dataform input {
+    height: 60;
+    background: #fff;
+    border-radius: 1px;
+    border: 0;
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 20px;
+  }
+  
+  .reviewsite form .signupform .dataform.textbox01 {
+    flex-grow: 1;
+  }
+  
+  .reviewsite form .signupform .dataform.textbox02 {
+    width: 30%;
+    min-width: 180px;
+  }
+  
+  .reviewsite form .signupform .dataform.textbox03 {
+    width: 180px;
+    margin-right: 0;
+  }
+  
+  .reviewsite form .signupform .dataform.textbox04 {
+    width: 30%;
+    min-width:280px;
+  }
+  
+  .reviewsite form .signupform .dataform.textbox03 .searchbtn {
+    height: 100%;
+    width: 100%;
+    background: #4272d7;
+    white-space: nowrap;
+    border-radius: .5px;
+    font-size: 20px;
+    color: #fff;
+    transition: all .2s ease-out, color .2s ease-out;
+    border: 0;
+    cursor: pointer;
+  }
+  
+  .reviewsite form .signupform .dataform.textbox03 .searchbtn:hover {
+    background: #2d62d3;
+  }
   
 @media screen and (max-width: 992px) {
   .reviewsite form legend {
@@ -210,48 +269,3 @@ html {
   }
 }
 
-@media screen and (max-width: 992px) {
-  .reviewsite form legend {
-    font-size: 50px;
-    text-align: center;
-    margin-bottom: 50px;
-  }
-  .reviewsite form .searchform {
-    padding: 30px 35px;
-  }
-  .reviewsite form .searchform .dataform {
-    height: 50px;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .reviewsite form legend {
-    font-size: 40px;
-    margin-bottom: 40px;
-  }
-  .reviewsite form .searchform {
-    flex-wrap: wrap;
-    padding: 20px;
-  }
-  .reviewsite form .searchform .dataform {
-    margin-right: 0;
-  }
-  .reviewsite form .searchform .dataform input {
-    padding: 5px 15px;
-    font-size: 16px;
-  }
-  .reviewsite form .searchform .dataform.textbox01 {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-  .reviewsite form .searchform .dataform.textbox02 {
-    width: calc(50% - 10px);
-    min-width: auto;
-  }
-  .reviewsite form .searchform .dataform.textbox03 {
-    width: calc(50% - 10px);
-  }
-  .reviewsite form .searchform .dataform.textbox03 .searchbtn {
-    font-size: 16px;
-  }
-}
