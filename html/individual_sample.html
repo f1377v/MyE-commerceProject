@@ -34,7 +34,7 @@
       </div>
     </div>
     <div class="Individual">
-        <div>
+        <!--<div>
             <h1>Bojnord Nights <i>(41.40338, 2.17403)</i></h1>
             <p>Also Known as little Paris nights, serves traditional French/Persian meals. $$$</p>
             <img alt="Restaurant" src="assets/images/Restaurant.jpg">
@@ -43,7 +43,7 @@
                 <p>Mamad: I for sure would go back next time I'm in the neighbourhood. 9/10</p>
                 <p>Emily: The food was amazing but also pricey. 7/10</p>
             </div>
-        </div>
+        </div>-->
     </div>
     <div class="footer-custom">
       <footer>
@@ -65,5 +65,20 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script>
+      //Populates the individual object html page accordingly
+      let params = new URLSearchParams(location.search);
+      var id = params.get('id')
+      var elementsArray = document.getElementsByClassName("Individual");
+      elementsArray[0].innerHTML = "<div>" +
+        "<h1>" +  "Object " + id + "<i>" + " (" + "Object " + id + " lat" + "," + "Object " + id + " long" + ")" + "</i>" + "</h1>" +
+        "<p>" + "Explanaition for object " + id + "</p>" +
+        "<img" + " alt=" + "Object" + id + " src=" + "assets/images/" + "Object" + id + ".jpg" + ">"
+        "<div" + "class=" + "Reviews>"
+        "<p>"+ Math.random() * 10 + "/10" + "</p>" +
+        "<p>" + Math.random() * 10 + "/10" + "</p>" + 
+        "<p>" + Math.random() * 10 + "/10" + "</p>" + 
+      "</div>"
+    </script>
   </body>
 </html>

@@ -186,6 +186,12 @@ a.active,a:hover{
     color:#aaa;
     margin-bottom:0;
   }
+  #map {
+    /* The height is 400 pixels */
+    height: 400px;
+    /* The width is the width of the web page */
+    width: 100%;
+  }
 /*section{
   background: url(bg1.jpg) no-repeat;
   background-size: cover;
