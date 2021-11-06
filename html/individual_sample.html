@@ -8,6 +8,39 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <link rel="stylesheet" href="assets/css/style.css">
+    <script>
+      //anonymous (function without name) self-invoking function to wrap our code and create an enclosed scope around it
+      objectClass = function(){
+        let params = new URLSearchParams(location.search);
+        var id = params.get('id');
+        return {id: id};
+      }();
+
+      function individualMap(){
+        // Constructing the map by passing a DOM location and options object
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 12,
+          center: {lat: 59.9362384705039, lng: 30.19232525792222},
+        });
+
+        //default value for individual object page for grades
+        var position = {lat: 59.9332384705039, lng:30.23232525792222};
+        if (objectClass.id === "1"){
+          position = {lat: 59.9362384705039, lng:30.19232525792222};
+        }
+        else if(objectClass.id === "2"){
+          position = {lat: 59.94141282208564, lng:30.263564729357767};
+        }
+        else if(objectClass.id === "3"){
+          position = {lat: 59.939177197629455, lng:30.273554411974955};
+        }
+        console.log(position);
+        var marker = new google.maps.Marker({
+            position: position,
+            map: map,
+          });
+      }
+    </script>
   </head>
   <body>
     <nav>
@@ -33,18 +66,9 @@
           </header>
       </div>
     </div>
-    <div class="Individual">
-        <!--<div>
-            <h1>Bojnord Nights <i>(41.40338, 2.17403)</i></h1>
-            <p>Also Known as little Paris nights, serves traditional French/Persian meals. $$$</p>
-            <img alt="Restaurant" src="assets/images/Restaurant.jpg">
-            <div class="Reviews">
-                <p>Martin: The food was good, but the staff weren't friendly. 6/10</p>
-                <p>Mamad: I for sure would go back next time I'm in the neighbourhood. 9/10</p>
-                <p>Emily: The food was amazing but also pricey. 7/10</p>
-            </div>
-        </div>-->
-    </div>
+
+    <div class="Individual"></div>
+
     <div class="footer-custom">
       <footer>
           <div class="SocialMedia">
@@ -67,18 +91,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <script>
       //Populates the individual object html page accordingly
-      let params = new URLSearchParams(location.search);
-      var id = params.get('id')
+      // let params = new URLSearchParams(location.search);
+      // var id = params.get('id')
       var elementsArray = document.getElementsByClassName("Individual");
-      elementsArray[0].innerHTML = "<div>" +
-        "<h1>" +  "Object " + id + "<i>" + " (" + "Object " + id + " lat" + "," + "Object " + id + " long" + ")" + "</i>" + "</h1>" +
-        "<p>" + "Explanaition for object " + id + "</p>" +
-        "<img" + " alt=" + "Object" + id + " src=" + "assets/images/" + "Object" + id + ".jpg" + ">"
-        "<div" + "class=" + "Reviews>"
-        "<p>"+ Math.random() * 10 + "/10" + "</p>" +
-        "<p>" + Math.random() * 10 + "/10" + "</p>" + 
-        "<p>" + Math.random() * 10 + "/10" + "</p>" + 
+      elementsArray[0].innerHTML = 
+      "<div> " +
+        "<h1>" +  "Object " + objectClass.id + "<i>" + " (" + "Object " + objectClass.id + " lat" + "," + "Object " + objectClass.id + " long" + ")" + "</i>" + "</h1>" +
+        "<p>" + "Explanaition for object " + objectClass.id + "</p>" +
+        "<div " + "id=" + "map" + ">" + "</div>" + 
+        " <br>" +
+        "<div " + "class=" + "Reviews>" +
+          "<p>"+ "Andy's Review: " + Math.round(Math.random() * 10) + "/10" + "</p>" +
+          "<p>" + "Pam's Review: "+ Math.round(Math.random() * 10) + "/10" + "</p>" + 
+          "<p>" + "Jim's Review: " + Math.round(Math.random() * 10) + "/10" + "</p>" + 
+        "</div>" +
       "</div>"
     </script>
+
+    <!-- Loading google maps api-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAm0ZHNBRqGaLQZmcToRBLz4fy_RnJeh_4&callback=individualMap&libraries=&v=weekly" async></script>
   </body>
 </html>
