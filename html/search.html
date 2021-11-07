@@ -41,12 +41,12 @@
           <legend>Go ahead! Search it.</legend>
         </fieldset>
         <div class="searchform">
-          <div class="dataform textbox01">
+          <div class="dataform databox">
             <input id="search" type="search" placeholder="Review?" />
           </div>
-          <div class="dataform textbox02">
+          <div class="dataform ratingbox">
           <!-- <input id="rating" type="number" placeholder="Review Rating" /> -->
-            <select class="dataform textbox02" name=”Rating”>
+            <select class="dataform ratingbox" name=”Rating”>
               <option value="" disabled selected>Select the rating.</option>
               <option value=”number1”>1</option>
               <option value=”number2”>2 </option>
@@ -60,11 +60,33 @@
               <option value=”number10”>10 </option>
             </select>
           </div>
-          <div class="dataform textbox03">
+          <div class="dataform searchbtnbox">
             <button class="searchbtn" type="button">Search</button>
+          </div>
+          <div class="dataform searchbtnbox">
+            <button class="searchbtn" type="button" onclick="getLocation()">Search near me</button>
           </div>
         </div>
       </form>
+      <p id="demo">helllo</p>
+      <script>var x = document.getElementById("demo");
+
+        function getLocation() {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+          } else { 
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        
+          }
+    
+        }
+        
+        function showPosition(position) {
+          x.innerHTML = "Latitude: " + position.coords.latitude + 
+          "<br>Longitude: " + position.coords.longitude;
+        }
+        
+      </script>
     </div>
     <div class="footer-custom">
       <footer>

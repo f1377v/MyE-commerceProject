@@ -68,21 +68,21 @@ html {
     font-size: 20px;
   }
   
-  .reviewsite form .searchform .dataform.textbox01 {
+  .reviewsite form .searchform .dataform.databox {
         flex-grow: 1;
   }
   
-  .reviewsite form .searchform .dataform.textbox02 {
-    width: 32.77%;
+  .reviewsite form .searchform .dataform.ratingbox {
     min-width: 180px;
+    
   }
-  
-  .reviewsite form .searchform .dataform.textbox03 {
+
+  .reviewsite form .searchform .dataform.searchbtnbox {
     width: 180px;
     margin-right: 0;
   }
   
-  .reviewsite form .searchform .dataform.textbox03 .searchbtn {
+  .reviewsite form .searchform .dataform.searchbtnbox .searchbtn {
     height: 100%;
     width: 100%;
     background: #4272d7;
@@ -95,7 +95,7 @@ html {
     cursor: pointer;
   }
   
-  .reviewsite form .searchform .dataform.textbox03 .searchbtn:hover {
+  .reviewsite form .searchform .dataform.searchbtnbox .searchbtn:hover {
     background: #2d62d3;
   }
 
@@ -125,26 +125,23 @@ html {
     font-size: 20px;
   }
   
-  .reviewsite form .submitform .dataform.textbox01 {
+  .reviewsite form .submitform .dataform.databox {
     flex-grow: 1;
   }
   
-  .reviewsite form .submitform .dataform.textbox02 {
+  .reviewsite form .submitform .dataform.ratingbox {
     width: 30%;
     min-width: 180px;
   }
   
-  .reviewsite form .submitform .dataform.textbox03 {
+  .reviewsite form .submitform .dataform.searchbtnbox {
     width: 180px;
-    margin-right: 0;
+    margin-right: 20px;
+    
   }
   
-  .reviewsite form .submitform .dataform.textbox04 {
-    width: 80%;
-    min-width:280px;
-  }
   
-  .reviewsite form .submitform .dataform.textbox03 .searchbtn {
+  .reviewsite form .submitform .dataform.searchbtnbox .searchbtn {
     height: 100%;
     width: 100%;
     background: #4272d7;
@@ -157,9 +154,10 @@ html {
     cursor: pointer;
   }
   
-  .reviewsite form .submitform .dataform.textbox03 .searchbtn:hover {
+  .reviewsite form .submitform .dataform.searchbtnbox .searchbtn:hover {
     background: #2d62d3;
   }
+
   
   .reviewsite form .signupform {
     background: rgba(0, 0, 0, 0.5);
@@ -187,26 +185,26 @@ html {
     font-size: 20px;
   }
   
-  .reviewsite form .signupform .dataform.textbox01 {
+  .reviewsite form .signupform .dataform.databox {
     flex-grow: 1;
   }
   
-  .reviewsite form .signupform .dataform.textbox02 {
+  .reviewsite form .signupform .dataform.ratingbox {
     width: 30%;
     min-width: 180px;
   }
   
-  .reviewsite form .signupform .dataform.textbox03 {
+  .reviewsite form .signupform .dataform.searchbtnbox {
     width: 180px;
     margin-right: 0;
   }
   
-  .reviewsite form .signupform .dataform.textbox04 {
+  .reviewsite form .signupform .dataform.searchbtnbox {
     width: 30%;
     min-width:280px;
   }
   
-  .reviewsite form .signupform .dataform.textbox03 .searchbtn {
+  .reviewsite form .signupform .dataform.searchbtnbox .searchbtn {
     height: 100%;
     width: 100%;
     background: #4272d7;
@@ -219,7 +217,7 @@ html {
     cursor: pointer;
   }
   
-  .reviewsite form .signupform .dataform.textbox03 .searchbtn:hover {
+  .reviewsite form .signupform .dataform.searchbtnbox .searchbtn:hover {
     background: #2d62d3;
   }
   
@@ -253,18 +251,18 @@ html {
     padding: 5px 15px;
     font-size: 16px;
   }
-  .reviewsite form .searchform .dataform.textbox01 {
+  .reviewsite form .searchform .dataform.databox {
     width: 100%;
     margin-bottom: 20px;
   }
-  .reviewsite form .searchform .dataform.textbox02 {
+  .reviewsite form .searchform .dataform.ratingbox {
     width: calc(50% - 10px);
     min-width: auto;
   }
-  .reviewsite form .searchform .dataform.textbox03 {
+  .reviewsite form .searchform .dataform.searchbtnbox {
     width: calc(50% - 10px);
   }
-  .reviewsite form .searchform .dataform.textbox03 .searchbtn {
+  .reviewsite form .searchform .dataform.searchbtnbox .searchbtn {
     font-size: 16px;
   }
 }
