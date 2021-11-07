@@ -69,7 +69,7 @@ html {
   }
   
   .reviewsite form .searchform .dataform.databox {
-        flex-grow: 1;
+    flex-grow: 1;
   }
   
   .reviewsite form .searchform .dataform.ratingbox {
@@ -126,11 +126,11 @@ html {
   }
   
   .reviewsite form .submitform .dataform.databox {
-    flex-grow: 1;
+    width: 20%;
   }
   
-  .reviewsite form .submitform .dataform.ratingbox {
-    width: 30%;
+  .reviewsite form .submitform .dataform.infobox {
+    width: 50%;
     min-width: 180px;
   }
   
@@ -186,21 +186,21 @@ html {
   }
   
   .reviewsite form .signupform .dataform.databox {
-    flex-grow: 1;
+    width: 30%;
   }
   
-  .reviewsite form .signupform .dataform.ratingbox {
+  .reviewsite form .signupform .dataform.infobox {
     width: 30%;
     min-width: 180px;
   }
   
   .reviewsite form .signupform .dataform.searchbtnbox {
-    width: 180px;
+    width: 10%;
     margin-right: 0;
   }
   
   .reviewsite form .signupform .dataform.searchbtnbox {
-    width: 30%;
+    width: 10%;
     min-width:280px;
   }
   

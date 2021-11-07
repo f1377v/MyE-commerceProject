@@ -63,26 +63,28 @@
           <div class="dataform searchbtnbox">
             <button class="searchbtn" type="button">Search</button>
           </div>
-          <div class="dataform searchbtnbox">
+          <div id ="changebtn" class="dataform searchbtnbox">
             <button class="searchbtn" type="button" onclick="getLocation()">Search near me</button>
           </div>
         </div>
       </form>
-      <p id="demo">helllo</p>
-      <script>var x = document.getElementById("demo");
+      
+      <script>
+      
+        var temp = document.getElementById("changebtn");
 
         function getLocation() {
           if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition);
           } else { 
-            x.innerHTML = "Geolocation is not supported by this browser.";
+            temp.innerHTML = "Geolocation is not supported by this browser.";
         
           }
     
         }
         
         function showPosition(position) {
-          x.innerHTML = "Latitude: " + position.coords.latitude + 
+          temp.innerHTML = "Latitude: " + position.coords.latitude + 
           "<br>Longitude: " + position.coords.longitude;
         }
         
