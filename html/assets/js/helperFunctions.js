@@ -35,7 +35,17 @@
         longitudetemp.value = position.coords.longitude
     }
 
+    function validateForm(){
+        var nametemp = document.getElementById("Name");
+        var emailtemp = document.getElementById("email");
+        var usernametemp = document.getElementById("username");
+        var passwordtemp = document.getElementById("password");
+        var passwordconfirmtemp = document.getElementById("passwordconfirm");
 
+        if (nametemp.value.innerHTML != "hello"){
+            alert("Name cannot be empty");
+        }
+    }
 
 
 

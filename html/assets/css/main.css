@@ -78,13 +78,13 @@ html {
   }
 
   .reviewsite form .searchform .dataform.searchbtnbox {
-    width: 180px;
+    width: 200px;
     margin-right: 0;
   }
   
   .reviewsite form .searchform .dataform.searchbtnbox .searchbtn {
     height: 100%;
-    width: 100%;
+    width: 90%;
     background: #4272d7;
     white-space: nowrap;
     border-radius: .5px;
@@ -126,16 +126,11 @@ html {
   }
   
   .reviewsite form .submitform .dataform input:invalid {
-    border: 3px;
-    border-color:rgb(148, 9, 9);
-    border-style: solid;
-
+    box-shadow: 3px 3px 3px rgb(189, 9, 9);
   }
 
   .reviewsite form .submitform .dataform input:valid {
-    border: 3px;
-    border-color:rgb(40, 116, 6);
-    border-style: solid;
+    box-shadow: 3px 3px 3px rgb(55, 163, 5);
 
   }
   
@@ -223,6 +218,15 @@ html {
     font-size: 20px;
   }
   
+  .reviewsite form .signupform .dataform input:valid {
+    box-shadow: 3px 3px 3px rgb(55, 163, 5);
+  }
+
+  .reviewsite form .signupform .dataform input:invalid {
+    box-shadow: 3px 3px 3px rgb(189, 9, 9);
+  }
+  
+
   .reviewsite form .signupform .dataform.databox {
     width: 30%;
   }

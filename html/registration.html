@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="assets/css/main.css" rel="stylesheet" />
+    <script src="assets\js\helperFunctions.js"></script>
   </head>
   <body>
     <nav>
@@ -43,22 +44,22 @@
         <div class="signupform">
           <p style="font-size:3vw">PLease Fill in the form.</p>
           <div class="dataform databox">
-            <input id="Name" type="text" placeholder="Your Full Name" />
+            <input id="Name" type="text" placeholder="Your Full Name" required/>
           </div>
           <div class="dataform infobox">
-            <input id="email" type="email" placeholder="Your Email" /> 
+            <input id="email" type="email" placeholder="Your Email" required/> 
           </div>
           <div class="dataform infobox">
-            <input id="username" type="Text" placeholder="Enter Username" /> 
+            <input id="username" type="text" placeholder="Enter Username" required minlength="4" maxlength="12" required/> 
           </div>
           <div class="dataform infobox">
-            <input id="password" type="password" placeholder="Enter Password" />
+            <input id="password" type="password" placeholder="Enter Password" minlength="5" maxlength="16" required />
           </div>
           <div class="dataform infobox">
-            <input id="passwordconfirm" type="password" placeholder="Confirm Password" />
+            <input id="passwordconfirm" type="password" placeholder="Confirm Password" minlength="5" maxlength="16" required/>
           </div>
           <div class="dataform searchbtnbox">
-            <button class="searchbtn" type="button">Signup</button>
+            <button class="searchbtn" type="button" onclick="validateForm()">Signup</button>
           </div>
         </div>
       </form>
