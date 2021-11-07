@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="assets/css/main.css" rel="stylesheet" />
+    <script src="assets\js\helperFunctions.js"></script>
   </head>
   <body>
     <nav>
@@ -41,23 +42,26 @@
           <legend>Go ahead! Submit it.</legend>
         </fieldset>
         <div class="submitform">
-          <div class="dataform databox">
-            <input id="search" type="text" placeholder="Title" />
+          <div class="dataform databox" style="width:30%">
+            <input id="search" type="text" placeholder="Title" required minlength="6" maxlength="50"/>
           </div>
           <div class="dataform databox">
-            <input id="Longitude" type="number" placeholder="location (Longitude)" /> 
+            <input id="Longitude" type="number" placeholder="Longitude" required min="-90" max="90"/> 
           </div>
           <div class="dataform databox">
-            <input id="Latitude" type="number" placeholder="location (Latitude)" /> 
+            <input id="Latitude" type="number" placeholder="Latitude" required min="-90" max="90"/> 
+          </div>
+          <div class="dataform searchbtnbox02">
+            <button class="searchbtn02" type="button" onclick="getLocationSubmit()">Locate me</button>
           </div>
           <div class="dataform infobox">
-            <input id="description" type="text" placeholder="Description" />
+            <input id="description" type="text" placeholder="Description" required minlength="6" maxlength="150"/>
           </div>
           <div class="dataform databox">
             <input type="file" id="img" name="img" accept="image/*">
           </div>
-          <div class="dataform searchbtnbox">
-            <button class="searchbtn" type="button">Submit</button>
+          <div class="dataform searchbtnbox01">
+            <button class="searchbtn01" type="button">Submit</button>
           </div>
         </div>
       </form>

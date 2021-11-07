@@ -125,6 +125,21 @@ html {
     font-size: 20px;
   }
   
+  .reviewsite form .submitform .dataform input:invalid {
+    border: 3px;
+    border-color:rgb(148, 9, 9);
+    border-style: solid;
+
+  }
+
+  .reviewsite form .submitform .dataform input:valid {
+    border: 3px;
+    border-color:rgb(40, 116, 6);
+    border-style: solid;
+
+  }
+  
+
   .reviewsite form .submitform .dataform.databox {
     width: 20%;
   }
@@ -134,14 +149,14 @@ html {
     min-width: 180px;
   }
   
-  .reviewsite form .submitform .dataform.searchbtnbox {
+  .reviewsite form .submitform .dataform.searchbtnbox01 {
     width: 180px;
     margin-right: 20px;
     
   }
   
   
-  .reviewsite form .submitform .dataform.searchbtnbox .searchbtn {
+  .reviewsite form .submitform .dataform.searchbtnbox01 .searchbtn01 {
     height: 100%;
     width: 100%;
     background: #4272d7;
@@ -154,11 +169,34 @@ html {
     cursor: pointer;
   }
   
-  .reviewsite form .submitform .dataform.searchbtnbox .searchbtn:hover {
+  .reviewsite form .submitform .dataform.searchbtnbox01 .searchbtn01:hover {
     background: #2d62d3;
   }
 
+  .reviewsite form .submitform .dataform.searchbtnbox02 {
+    width: 180px;
+    height : 60px;
+    margin-right: 20px;
+    
+  }
   
+  
+  .reviewsite form .submitform .dataform.searchbtnbox02 .searchbtn02 {
+    height: 50%;
+    width: 100%;
+    background: #4272d7;
+    white-space: nowrap;
+    border-radius: .5px;
+    font-size: 20px;
+    color: #fff;
+    transition: all .2s ease-out, color .2s ease-out;
+    border: 0;
+    cursor: pointer;
+  }
+  
+  .reviewsite form .submitform .dataform.searchbtnbox02 .searchbtn02:hover {
+    background: #2d62d3;
+  }
   .reviewsite form .signupform {
     background: rgba(0, 0, 0, 0.5);
     padding: 50px 50px;
