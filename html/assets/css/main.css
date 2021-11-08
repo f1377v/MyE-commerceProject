@@ -24,7 +24,7 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Brush Script MT', sans-serif;
+    font: italic 1.2em "Fira Sans", serif;;
     background: url("https://www.freecodecamp.org/news/content/images/size/w2000/2021/06/w-qjCHPZbeXCQ-unsplash.jpg");
     background-size: cover;
     background-position: center center;
@@ -40,7 +40,8 @@ html {
     font-size: 72px;
     line-height: 1;
     color: #fff;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
+    padding-top: 60px;
   }
 
   .reviewsite form .searchform {
@@ -78,7 +79,7 @@ html {
   }
 
   .reviewsite form .searchform .dataform.searchbtnbox {
-    width: 200px;
+    width: 230px;
     margin-right: 0;
   }
   
@@ -218,14 +219,14 @@ html {
     font-size: 20px;
   }
   
-  .reviewsite form .signupform .dataform input:valid {
+  /*.reviewsite form .signupform .dataform input:valid {
     box-shadow: 3px 3px 3px rgb(55, 163, 5);
   }
 
   .reviewsite form .signupform .dataform input:invalid {
     box-shadow: 3px 3px 3px rgb(189, 9, 9);
   }
-  
+  */
 
   .reviewsite form .signupform .dataform.databox {
     width: 30%;

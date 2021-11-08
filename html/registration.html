@@ -39,14 +39,13 @@
     </div>
     <br>
     <div class="reviewsite">
-      <form>
+      <form action="/onRegister.php" method="post">
         <fieldset>
           <legend>Go ahead! Register.</legend>
         </fieldset>
         <div class="signupform">
-          <p style="font-size:3vw">PLease Fill in the form.</p>
           <div class="dataform databox">
-            <input id="Name" type="text" placeholder="Your Full Name" required/>
+            <input id="Name" type="text" placeholder="Your Full Name" required minlength="3"/>
           </div>
           <div class="dataform infobox">
             <input id="email" type="email" placeholder="Your Email" required/> 

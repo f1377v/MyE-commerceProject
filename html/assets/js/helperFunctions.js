@@ -36,14 +36,31 @@
     }
 
     function validateForm(){
+        var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
         var nametemp = document.getElementById("Name");
         var emailtemp = document.getElementById("email");
         var usernametemp = document.getElementById("username");
         var passwordtemp = document.getElementById("password");
         var passwordconfirmtemp = document.getElementById("passwordconfirm");
 
-        if (nametemp.value.innerHTML != "hello"){
-            alert("Name cannot be empty");
+        if (!nametemp.checkValidity() || format.test(nametemp.value)){
+            alert("Name input is not valid. Please try again.");
+        }
+        
+
+        if (!emailtemp.checkValidity()){
+            alert("Email input is not valid. Please try again.");
+        }
+
+        if (!usernametemp.checkValidity() || format.test(usernametemp.value)){
+            alert("Username input is not valid. Please try again.");
+        }
+
+    
+        if (!passwordtemp.checkValidity()){ 
+                alert("Password input is not valid. Please try again.");
+        } else if (passwordtemp.value != passwordconfirmtemp.value){
+                alert("Passwords must match. Please try again.");
         }
     }
 
