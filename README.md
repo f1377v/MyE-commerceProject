@@ -1,6 +1,6 @@
 # Title
   Review Freak
-# Description 
+# About 
   If it exists, we have reviews for it!!!
 # Authors 
   Group: ezMoney\
