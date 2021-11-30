@@ -21,8 +21,8 @@
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="search.html">Search</a></li>
-        <li><a class="active" href="submission.html">Submit</a></li>
-        <li><a href="registration.html">Sign Up</a></li>
+        <li><a href="submission.php">Submit</a></li>
+        <li><a class="active" href="registration.php">Sign Up</a></li>
         <li><a href="#">Login</a></li>
         <li><a href="individual_sample.html">Sample Review</a></li>
         <li><a href="results_sample.html">Reviews</a></li>
@@ -39,31 +39,29 @@
     </div>
     <br>
     <div class="reviewsite">
-      <form action="/onSubmission.php" method="post">
+      <form method="post" action="https://localhost/onRegistration.php">
         <fieldset>
-          <legend>Go ahead! Submit it.</legend>
+          <legend>Go ahead! Register.</legend>
         </fieldset>
-        <div class="submitform">
-          <div class="dataform databox" style="width:30%">
-            <input id="search" type="text" placeholder="Title" required minlength="6" maxlength="50"/>
-          </div>
+        <div class="signupform">
           <div class="dataform databox">
-            <input id="Longitude" type="number" step = "any" placeholder="Longitude" required min="-90" max="90"/> 
-          </div>
-          <div class="dataform databox">
-            <input id="Latitude" type="number" step = "any" placeholder="Latitude" required min="-90" max="90"/> 
-          </div>
-          <div class="dataform searchbtnbox02">
-            <button class="searchbtn02" type="button" onclick="getLocationSubmit()">Locate me</button>
+            <input id="Name" type="text" name = "nameBox" placeholder="Your Full Name" required minlength="3"/>
           </div>
           <div class="dataform infobox">
-            <input id="description" type="text" placeholder="Description" required minlength="6" maxlength="150"/>
+            <input id="email" type="email" name = "emailBox" placeholder="Your Email" required/> 
           </div>
-          <div class="dataform databox">
-            <input type="file" id="img" name="img" accept="image/*">
+          <div class="dataform infobox">
+            <input id="username" type="text" name = "usernameBox" placeholder="Enter Username" autocomplete="off" required minlength="4" maxlength="12"/> 
           </div>
-          <div class="dataform searchbtnbox01">
-            <button class="searchbtn01" type="button">Submit</button>
+          <div class="dataform infobox">
+            <input id="password" type="password" name = "passwordBox" placeholder="Enter Password" autocomplete="off" minlength="5" maxlength="16" required />
+          </div>
+          <div class="dataform infobox">
+            <input id="passwordconfirm" type="password" name = "passwordConfirmBox" autocomplete="off" placeholder="Confirm Password" minlength="5" maxlength="16" required/>
+          </div>
+          <div class="dataform searchbtnbox">
+            <input type ="hidden" name = "registerToken" value = "QnyP&ZtwYUk6MP7awp_^=D63B*$qPbY5" />
+            <button class="searchbtn" type="submit" onclick="validateForm()">Signup</button>
           </div>
         </div>
       </form>

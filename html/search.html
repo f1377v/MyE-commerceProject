@@ -21,8 +21,8 @@
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a class="active" href="search.html">Search</a></li>
-        <li><a href="submission.html">Submit</a></li>
-        <li><a href="registration.html">Sign Up</a></li>
+        <li><a href="submission.php">Submit</a></li>
+        <li><a href="registration.php">Sign Up</a></li>
         <li><a href="#">Login</a></li>
         <li><a href="individual_sample.html">Sample Review</a></li>
         <li><a href="results_sample.html">Reviews</a></li>
@@ -39,13 +39,13 @@
     </div>
     <br>
     <div class="reviewsite">
-      <form action="/results_sample.html" method="get">
+      <form action="/onSearch.php" method="get">
         <fieldset>
           <legend>Go ahead! Search it.</legend>
         </fieldset>
         <div class="searchform">
           <div class="dataform databox">
-            <input id="search" type="search" placeholder="Review Object" />
+            <input id="search" type="search" name = "searchBox" placeholder="Review Object" />
           </div>
           <div class="dataform ratingbox">
           <!-- <input id="rating" type="number" placeholder="Review Rating" /> -->
@@ -64,10 +64,10 @@
             </select>
           </div>
           <div class="dataform searchbtnbox">
-            <button class="searchbtn" type="button">Search</button>
+            <button class="searchbtn" type="submit" value = "locationoff">Search</button>
           </div>
           <div class="dataform searchbtnbox">
-            <button id ="changebtn" class="searchbtn" type="button" onclick="getLocationSearch()">Search near me</button>
+            <button id ="changebtn" class="searchbtn" type="submit" value = "locationon">Search near me</button>
           </div>
         </div>
       </form>

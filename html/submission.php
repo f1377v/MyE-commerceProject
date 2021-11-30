@@ -1,3 +1,6 @@
+<!-- <?php
+  session_start();
+?> -->
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -21,8 +24,8 @@
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="search.html">Search</a></li>
-        <li><a href="submission.html">Submit</a></li>
-        <li><a class="active" href="registration.html">Sign Up</a></li>
+        <li><a class="active" href="submission.php">Submit</a></li>
+        <li><a href="registration.php">Sign Up</a></li>
         <li><a href="#">Login</a></li>
         <li><a href="individual_sample.html">Sample Review</a></li>
         <li><a href="results_sample.html">Reviews</a></li>
@@ -38,29 +41,38 @@
       </div>
     </div>
     <br>
+    <!-- <?php 
+      $is_session_valid = 0;
+
+      
+    ?> -->
     <div class="reviewsite">
-      <form action="/onRegister.php" method="post">
+      <form method="post" action="https://localhost/onSubmission.php">
         <fieldset>
-          <legend>Go ahead! Register.</legend>
+          <legend>Go ahead! Submit it.</legend>
         </fieldset>
-        <div class="signupform">
+        <div class="submitform">
+          <div class="dataform databox" style="width:30%">
+            <input id="search" type="text" name = "titleBox" placeholder="Title" required minlength="6" maxlength="50"/>
+          </div>
           <div class="dataform databox">
-            <input id="Name" type="text" placeholder="Your Full Name" required minlength="3"/>
+            <input id="Latitude" type="number" step = "any" name = "LatitudeBox" placeholder="Latitude" required min="-90" max="90"/> 
+          </div>
+          <div class="dataform databox">
+            <input id="Longitude" type="number" step = "any" name = "LongitudeBox" placeholder="Longitude" required min="-90" max="90"/> 
+          </div>
+          <div class="dataform searchbtnbox02">
+            <button class="searchbtn02" type="button" onclick="getLocationSubmit()">Locate me</button>
           </div>
           <div class="dataform infobox">
-            <input id="email" type="email" placeholder="Your Email" required/> 
+            <input id="description" autocomplete="off"  type="text" placeholder="Description" name = "DescriptionBox" required minlength="6" maxlength="150"/>
           </div>
-          <div class="dataform infobox">
-            <input id="username" type="text" placeholder="Enter Username" required minlength="4" maxlength="12"/> 
+          <div class="dataform databox">
+            <input type="file" id="img" name="img" accept="image/*">
           </div>
-          <div class="dataform infobox">
-            <input id="password" type="password" placeholder="Enter Password" minlength="5" maxlength="16" required />
-          </div>
-          <div class="dataform infobox">
-            <input id="passwordconfirm" type="password" placeholder="Confirm Password" minlength="5" maxlength="16" required/>
-          </div>
-          <div class="dataform searchbtnbox">
-            <button class="searchbtn" type="button" onclick="validateForm()">Signup</button>
+          <div class="dataform searchbtnbox01">
+            <input type ="hidden" name = "submitToken" value = "QnyP&ZtwYUk6MP7awp_^=D63B*$qPbY5" />
+            <button class="searchbtn01" type="submit">Submit</button>
           </div>
         </div>
       </form>
