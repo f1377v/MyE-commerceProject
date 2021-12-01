@@ -27,7 +27,8 @@
         <li><a href="search.html">Search</a></li>
         <li><a href="submission.php">Submit</a></li>
         <li><a class="active" href="registration.php">Sign Up</a></li>
-        <li><a href="#">Login</a></li>
+        <li><a href="login.php">Login</a></li>
+        <li><a href="logout.php">Logout</a></li>
         <li><a href="individual_sample.html">Sample Review</a></li>
         <li><a href="results_sample.html">Reviews</a></li>
       </ul>

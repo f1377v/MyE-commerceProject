@@ -1,3 +1,7 @@
+<?php
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -20,11 +24,11 @@
       <label class="logo">Review Freak</label>
       <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a class="active" href="search.html">Search</a></li>
+        <li><a href="search.html">Search</a></li>
         <li><a href="submission.php">Submit</a></li>
         <li><a href="registration.php">Sign Up</a></li>
         <li><a href="login.php">Login</a></li>
-        <li><a href="logout.php">Logout</a></li>
+        <li><a class="active" href="logout.php">Logout</a></li>
         <li><a href="individual_sample.html">Sample Review</a></li>
         <li><a href="results_sample.html">Reviews</a></li>
       </ul>
@@ -39,42 +43,39 @@
       </div>
     </div>
     <br>
+    <?php 
+      $is_session_valid = 0;
+
+      if (isset($_SESSION['valid'])){
+        if (!empty($_SESSION['valid'])){
+          if ($_SESSION['valid'] == '1'){
+            $is_session_valid = 1;
+          }
+        }
+      }
+
+      if ($is_session_valid == 0){
+      
+    ?>
     <div class="reviewsite">
-      <form action="/onSearch.php" method="get">
-        <fieldset>
-          <legend>Go ahead! Search it.</legend>
-        </fieldset>
-        <div class="searchform">
-          <div class="dataform databox">
-            <input id="search" type="search" name = "searchBox" placeholder="Review Object" />
-          </div>
-          <div class="dataform ratingbox">
-          <!-- <input id="rating" type="number" placeholder="Review Rating" /> -->
-            <select class="dataform ratingbox" name=”Rating”>
-              <option value="" disabled selected>Select the rating.</option>
-              <option value=”number1”>1</option>
-              <option value=”number2”>2 </option>
-              <option value=”number3”>3</option>
-              <option value=”number4”>4 </option>
-              <option value=”number5”>5</option>
-              <option value=”number6”>6 </option>
-              <option value=”number7”>7</option>
-              <option value=”number8”>8 </option>
-              <option value=”number9”>9</option>
-              <option value=”number10”>10 </option>
-            </select>
-          </div>
-          <div class="dataform searchbtnbox">
-            <button class="searchbtn" type="submit" value = "locationoff">Search</button>
-          </div>
-          <div class="dataform searchbtnbox">
-            <button id ="changebtn" class="searchbtn" type="submit" value = "locationon">Search near me</button>
-          </div>
-        </div>
-      </form>
-      
-      
+      <p style = "font-size:80px"> You are already logged out. </p>
     </div>
+
+    <?php } else { 
+
+      unset($_SESSION['type']);
+      unset($_SESSION['valid']);
+      
+      session_destroy();
+
+    ?>
+
+    <div class="reviewsite">
+      <p style = "font-size:80px"> You are now logged out. </p>
+    </div>
+
+    <?php } ?>
+
     <div class="footer-custom">
       <footer>
           <div class="SocialMedia">
