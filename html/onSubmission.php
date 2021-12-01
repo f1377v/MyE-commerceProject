@@ -34,7 +34,11 @@ session_start();
                                                             )";
 
                         if ($conne -> query($sql) == TRUE){
-                            header('Location: '. 'http://localhost/results_sample.html');
+                            $message = 'You have submitted a review successfully. Thanks!';
+                            echo "<SCRIPT> 
+                                    alert('$message')
+                                    window.location.replace('http://localhost/results_sample.html');
+                                </SCRIPT>";
                             die();
                         } else {
                             echo "Error: " . $sql . "<br>" . $conne -> error;
