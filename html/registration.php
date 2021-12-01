@@ -94,24 +94,9 @@
 
     <?php } ?>
 
-    <div class="footer-custom">
-      <footer>
-          <div class="SocialMedia">
-            <a href="#"><i class="icon ion-social-instagram"></i></a>
-            <a href="#"><i class="icon ion-social-snapchat"></i></a>
-            <a href="#"><i class="icon ion-social-twitter"></i></a>
-            <a href="#"><i class="icon ion-social-facebook"></i></a>
-          </div>
-          <ul class="list-inline">
-              <li class="list-inline-item"><a href="#">Home</a></li>
-              <li class="list-inline-item"><a href="#">Services</a></li>
-              <li class="list-inline-item"><a href="#">About</a></li>
-              <li class="list-inline-item"><a href="#">Terms</a></li>
-              <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
-          </ul>
-          <p class="copyright">Farzad & Pedram © 2021</p>
-      </footer>
-    </div>
+    <?php
+    include 'footer.html';
+   ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
   </body>
