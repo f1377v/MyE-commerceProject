@@ -1,3 +1,7 @@
+<?php
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -38,8 +42,22 @@
       </div>
     </div>
     <br>
+    <?php 
+      $is_session_valid = 0;
+
+      if (isset($_SESSION['valid'])){
+        if (!empty($_SESSION['valid'])){
+          if ($_SESSION['valid'] == '1'){
+            $is_session_valid = 1;
+          }
+        }
+      }
+
+      if ($is_session_valid == 0){
+      
+    ?>
     <div class="reviewsite">
-      <form method="post" action="https://localhost/onRegistration.php">
+      <form method="post" action="https://localhost/onRegistration.php" id = "registerForm" name = "registerForm">
         <fieldset>
           <legend>Go ahead! Register.</legend>
         </fieldset>
@@ -61,11 +79,20 @@
           </div>
           <div class="dataform searchbtnbox">
             <input type ="hidden" name = "registerToken" value = "QnyP&ZtwYUk6MP7awp_^=D63B*$qPbY5" />
-            <button class="searchbtn" type="submit" onclick="validateForm()">Signup</button>
+            <button class="searchbtn" type="button" onclick="return validateForm();">Signup</button>
           </div>
         </div>
       </form>
     </div>
+
+    <?php } else { ?>
+
+      <div class="reviewsite">
+        <p style = "font-size:80px"> Please logout to view the signup form. </p>
+      </div>
+
+    <?php } ?>
+
     <div class="footer-custom">
       <footer>
           <div class="SocialMedia">

@@ -1,6 +1,7 @@
-<!-- <?php
+<?php
   session_start();
-?> -->
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -41,13 +42,22 @@
       </div>
     </div>
     <br>
-    <!-- <?php 
+    <?php 
       $is_session_valid = 0;
 
+      if (isset($_SESSION['valid'])){
+        if (!empty($_SESSION['valid'])){
+          if ($_SESSION['valid'] == '1'){
+            $is_session_valid = 1;
+          }
+        }
+      }
+
+      if ($is_session_valid == 0){
       
-    ?> -->
+    ?>
     <div class="reviewsite">
-      <form method="post" action="https://localhost/onSubmission.php">
+      <form method="post" action="https://localhost/onSubmission.php" id = "submitForm" name = "submitForm">
         <fieldset>
           <legend>Go ahead! Submit it.</legend>
         </fieldset>
@@ -77,6 +87,14 @@
         </div>
       </form>
     </div>
+
+    <?php } else { ?>
+
+      <div class="reviewsite">
+        <p style = "font-size:80px"> Please login to view the submission form. </p>
+      </div>
+
+    <?php } ?>
     <div class="footer-custom">
       <footer>
           <div class="SocialMedia">
