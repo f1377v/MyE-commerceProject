@@ -35,7 +35,12 @@
                                                                 )";
 
                             if ($conne -> query($sql) == TRUE){
-                                header('Location: '. 'http://localhost/index.html');
+                                $message = 'You have signed up successfully. Enjoy!';
+                                echo "<SCRIPT> 
+                                    alert('$message')
+                                    window.location.replace('http://localhost/index.html');
+                                </SCRIPT>";
+                                
                                 die();
                             } else {
                                 echo "Error: " . $sql . "<br>" . $conne -> error;
