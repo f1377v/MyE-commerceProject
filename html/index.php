@@ -1,6 +1,3 @@
-<!-- <?php
-  session_start();
-?> -->
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -12,7 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="assets/css/main.css" rel="stylesheet" />
-    <script src="assets/js/helperFunctions.js"></script>
   </head>
   <body>
     <nav>
@@ -22,9 +18,9 @@
       </label>
       <label class="logo">Review Freak</label>
       <ul>
-        <li><a href="index.html">Home</a></li>
+        <li><a class="active" href="index.html">Home</a></li>
         <li><a href="search.html">Search</a></li>
-        <li><a class="active" href="submission.php">Submit</a></li>
+        <li><a href="submission.php">Submit</a></li>
         <li><a href="registration.php">Sign Up</a></li>
         <li><a href="#">Login</a></li>
         <li><a href="individual_sample.html">Sample Review</a></li>
@@ -41,43 +37,7 @@
       </div>
     </div>
     <br>
-    <!-- <?php 
-      $is_session_valid = 0;
-
-      
-    ?> -->
-    <div class="reviewsite">
-      <form method="post" action="https://localhost/onSubmission.php">
-        <fieldset>
-          <legend>Go ahead! Submit it.</legend>
-        </fieldset>
-        <div class="submitform">
-          <div class="dataform databox" style="width:30%">
-            <input id="search" type="text" name = "titleBox" placeholder="Title" required minlength="6" maxlength="50"/>
-          </div>
-          <div class="dataform databox">
-            <input id="Latitude" type="number" step = "any" name = "LatitudeBox" placeholder="Latitude" required min="-90" max="90"/> 
-          </div>
-          <div class="dataform databox">
-            <input id="Longitude" type="number" step = "any" name = "LongitudeBox" placeholder="Longitude" required min="-90" max="90"/> 
-          </div>
-          <div class="dataform searchbtnbox02">
-            <button class="searchbtn02" type="button" onclick="getLocationSubmit()">Locate me</button>
-          </div>
-          <div class="dataform infobox">
-            <input id="description" autocomplete="off"  type="text" placeholder="Description" name = "DescriptionBox" required minlength="6" maxlength="150"/>
-          </div>
-          <div class="dataform databox">
-            <input type="file" id="img" name="img" accept="image/*">
-          </div>
-          <div class="dataform searchbtnbox01">
-            <input type ="hidden" name = "submitToken" value = "QnyP&ZtwYUk6MP7awp_^=D63B*$qPbY5" />
-            <button class="searchbtn01" type="submit">Submit</button>
-          </div>
-        </div>
-      </form>
-    </div>
-    <?php
+   <?php
     include 'footer.html';
    ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="assets/css/main.css" rel="stylesheet" />
+    <script src="assets/js/helperFunctions.js"></script>
   </head>
   <body>
     <nav>
@@ -18,8 +19,8 @@
       </label>
       <label class="logo">Review Freak</label>
       <ul>
-        <li><a class="active" href="index.html">Home</a></li>
-        <li><a href="search.html">Search</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a class="active" href="search.html">Search</a></li>
         <li><a href="submission.php">Submit</a></li>
         <li><a href="registration.php">Sign Up</a></li>
         <li><a href="#">Login</a></li>
@@ -37,24 +38,45 @@
       </div>
     </div>
     <br>
-    <div class="footer-custom">
-      <footer>
-          <div class="SocialMedia">
-            <a href="#"><i class="icon ion-social-instagram"></i></a>
-            <a href="#"><i class="icon ion-social-snapchat"></i></a>
-            <a href="#"><i class="icon ion-social-twitter"></i></a>
-            <a href="#"><i class="icon ion-social-facebook"></i></a>
+    <div class="reviewsite">
+      <form action="/onSearch.php" method="get">
+        <fieldset>
+          <legend>Go ahead! Search it.</legend>
+        </fieldset>
+        <div class="searchform">
+          <div class="dataform databox">
+            <input id="search" type="search" name = "searchBox" placeholder="Review Object" />
           </div>
-          <ul class="list-inline">
-              <li class="list-inline-item"><a href="#">Home</a></li>
-              <li class="list-inline-item"><a href="#">Services</a></li>
-              <li class="list-inline-item"><a href="#">About</a></li>
-              <li class="list-inline-item"><a href="#">Terms</a></li>
-              <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
-          </ul>
-          <p class="copyright">Farzad & Pedram © 2021</p>
-      </footer>
+          <div class="dataform ratingbox">
+          <!-- <input id="rating" type="number" placeholder="Review Rating" /> -->
+            <select class="dataform ratingbox" name=”Rating”>
+              <option value="" disabled selected>Select the rating.</option>
+              <option value=”number1”>1</option>
+              <option value=”number2”>2 </option>
+              <option value=”number3”>3</option>
+              <option value=”number4”>4 </option>
+              <option value=”number5”>5</option>
+              <option value=”number6”>6 </option>
+              <option value=”number7”>7</option>
+              <option value=”number8”>8 </option>
+              <option value=”number9”>9</option>
+              <option value=”number10”>10 </option>
+            </select>
+          </div>
+          <div class="dataform searchbtnbox">
+            <button class="searchbtn" type="submit" value = "locationoff">Search</button>
+          </div>
+          <div class="dataform searchbtnbox">
+            <button id ="changebtn" class="searchbtn" type="submit" value = "locationon">Search near me</button>
+          </div>
+        </div>
+      </form>
+      
+      
     </div>
+    <?php
+    include 'footer.html';
+   ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
   </body>
