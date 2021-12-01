@@ -130,6 +130,14 @@ html {
     box-shadow: 3px 3px 3px rgb(189, 9, 9);
   }
 
+  .reviewsite form .submitform .dataform select:invalid {
+    box-shadow: 3px 3px 3px rgb(189, 9, 9);
+  }
+
+  .reviewsite form .submitform .dataform select:valid {
+    box-shadow: 3px 3px 3px rgb(55, 163, 5);
+  }
+
   .reviewsite form .submitform .dataform input:valid {
     box-shadow: 3px 3px 3px rgb(55, 163, 5);
 
