@@ -1,10 +1,10 @@
 
 <?php
 class Database{
-  private $servername = "localhost";
+  private $servername = "13.59.153.66";
   private $username = "root";
-  private $password = "";
-  private $dbname = "submissions";
+  private $password = "password";
+  private $dbname = "phpmyadmin";
   public $conne;
 
   public function getConnection(){
