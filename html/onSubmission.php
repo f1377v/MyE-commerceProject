@@ -37,7 +37,7 @@ session_start();
                             $message = 'You have submitted a new record successfully. Thanks!';
                             echo "<SCRIPT> 
                                     alert('$message')
-                                    window.location.replace('http://13.59.153.66/results_sample.php');
+                                    window.location.replace('http://13.59.153.66/search.php');
                                 </SCRIPT>";
                             die();
                         } else {
