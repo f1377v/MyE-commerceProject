@@ -20,11 +20,11 @@ session_start();
                     echo $file_name;
 
                     require 'vendor/autoload.php';
-                    use Aws\S3\S3Client;  
-                    use Aws\Exception\AwsException;
+                    
                     
 
                     $s3 = new Aws\S3\S3Client([
+                        'profile' => 'FWebV',
                         'region'  => 'us-east-2',
                         'version' => 'latest',
                         'credentials' => [
