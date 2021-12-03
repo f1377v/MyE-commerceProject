@@ -19,7 +19,7 @@ session_start();
 
                     echo $file_name;
 
-                    require 'vendor/autoload.php';
+                    require '/path/to/vendor/autoload.php';
                     
                     
 
