@@ -11,18 +11,13 @@
                         $passwordText = $_POST['passwordBox'];
                         $passwordConfirmText = $_POST['passwordConfirmBox'];
 
-                        $servername = "localhost";
-                        $username = "root";
-                        $password = "";
-                        $dbname = "submissions";
-
-                        $conne = new mysqli($servername, $username, $password, $dbname);
-
-                        if ($conne -> connect_error){
-                            die("Connection failed while inserting data: " . $conne -> connect_error);
-                        }
-
-                        else {
+                        $database = new Database();
+                        $db = $database->getConnection();
+            
+                        if($db['status'] == '0'){
+                          die("Connection failed while fetching data: ".$db['message']);
+                        } else {
+                            $conne = $db['connection'];
                             $sql = "INSERT INTO registrationform (fullname,  
                                                                 email, 
                                                                 username,

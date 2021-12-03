@@ -1,3 +1,46 @@
+
+<?php
+  // get database connection
+  include_once './config/database.php';
+  $message = "";
+  if($_SERVER["REQUEST_METHOD"] == "POST"){
+    if ( (isset($_POST['reviewBox'])) && (isset($_POST['ratingBox'])) && (isset($_POST['idBox'])) ){
+        if ( (!empty($_POST['reviewBox'])) && (!empty($_POST['ratingBox'])) && (!empty($_POST['idBox'])) ){
+            $review = $_POST['reviewBox'];
+            $rating = $_POST['ratingBox'];
+            $id = $_POST['idBox'];
+          
+            $database = new Database();
+            $db = $database->getConnection();
+
+            if($db['status'] == '0'){
+              die("Connection failed while fetching data: ".$db['message']);
+            } else {
+              $conne = $db['connection'];
+
+              //Inserting review to database
+              $sql = "INSERT INTO reviewform (id, Review, Rating) VALUES ( '$id', '$review', '$rating' )";
+              $conne->query($sql);
+
+              if ($conne->query($sql) == TRUE){
+                $message = 'You have submitted a new review successfully. Thanks!';
+              } else {
+                echo "Error: ".$sql."<br>".$conne->error;
+              }
+              $conne->close();
+            }
+        }
+        else {
+          echo "Empty data";
+        }
+  } else {
+      echo "Data not set";
+    }
+}
+?>
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -8,58 +51,64 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link href="assets/css/main.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-      //anonymous (function without name) self-invoking function to wrap our code and create an enclosed scope around it
+    //anonymous (function without name) self-invoking function to wrap our code and create an enclosed scope around it
       objectClass = function(){
         let params = new URLSearchParams(location.search);
         var id = params.get('id');
         return {id: id};
       }();
+      var object;
+      if (objectClass.id != ""){
+        $.ajax({
+          type: "POST",
+          url:"fetch-data.php",
+          data: JSON.stringify({'id': objectClass.id}),
 
-      function individualMap(){
-        // Constructing the map by passing a DOM location and options object
-        const map = new google.maps.Map(document.getElementById("map"), {
-          zoom: 12,
-          center: {lat: 59.9362384705039, lng: 30.19232525792222},
+          success:function(response){
+            var data = JSON.parse(response);
+            object = data.response_objData;
+            var reviews = data.response_reviews;
+            console.log(reviews);
+            //Populating information about the objects using the response from database
+            var elementsArray = document.getElementsByClassName("Individual");
+            elementsArray[0].innerHTML = 
+            "<div> " +
+              "<h1>" +  object.Title + "<i>" + " (" + object.Lat + "," + object.Long + ")" + "</i>" + "</h1>" +
+              "<p>" + object.Description + "</p>" +
+              "<div " + "id=" + "map" + ">" + "</div>";
+            "</div>";
+
+            //Populating reviews using the response from database
+            var elementsArray = document.getElementsByClassName("Reviews");
+            if (reviews.length == 0){
+              elementsArray[0].innerHTML += 
+              "<p style=\"font-size: 30px\"> No reviews are avaiable, be the first to submit!</p>";
+            }
+            for(var i=0 ; i < reviews.length; i++){
+              console.log(reviews[i].Review);
+              elementsArray[0].innerHTML += 
+              "<p>" + reviews[i].Rating + "/10. " +  reviews[i].Review + "</p>";
+            }
+            //Adding google map scripts at the end of document dynamically
+            var my_awesome_script = document.createElement('script');
+            my_awesome_script.setAttribute('src','https://maps.googleapis.com/maps/api/js?key=AIzaSyAm0ZHNBRqGaLQZmcToRBLz4fy_RnJeh_4&callback=individualMap&libraries=&v=weekly');
+            document.body.appendChild(my_awesome_script);
+
+            //Populate a hidden input field 
+            document.getElementById('id').value = objectClass.id;
+          }
         });
-
-        //default value for individual object page for grades
-        var position = {lat: 59.9332384705039, lng:30.23232525792222};
-        if (objectClass.id === "1"){
-          position = {lat: 59.9362384705039, lng:30.19232525792222};
-        }
-        else if(objectClass.id === "2"){
-          position = {lat: 59.94141282208564, lng:30.263564729357767};
-        }
-        else if(objectClass.id === "3"){
-          position = {lat: 59.939177197629455, lng:30.273554411974955};
-        }
-        console.log(position);
-        var marker = new google.maps.Marker({
-            position: position,
-            map: map,
-          });
       }
-    </script>
+       </script>
+
   </head>
   <body>
-    <nav>
-      <input type="checkbox" id="bars">
-      <label for="bars" class="barsbtn">
-        <i class="fas fa-bars"></i>
-      </label>
-      <label class="logo">Review Freak</label>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="search.html">Search</a></li>
-        <li><a href="submission.php">Submit</a></li>
-        <li><a href="registration.php">Sign Up</a></li>
-        <li><a href="login.php">Login</a></li>
-        <li><a href="logout.php">Logout</a></li>
-        <li><a class="active" href="individual_sample.html">Sample Review</a></li>
-        <li><a href="results_sample.html">Reviews</a></li>
-      </ul>
-    </nav>
+    <?php
+      include 'nav_bar.html';
+    ?>
     <!--It's not a good approch to deal directly with body So, create a wrapper container and make it a full-window height.-->
     <div style="background: url(assets/images/ReviewTimeTransparent.png)" class="min-height bckground-cover"> 
       <div class="container py-5">
@@ -71,32 +120,78 @@
     </div>
 
     <div class="Individual"></div>
+    <br>
+    <div class="Reviews">
+      <!--<p>Andy's Review: 7/10. Love the location, really close to the subway and friendly people.</p>
+      <p>Pam's Review: 8/10. Beautiful neighbourhood with multiple tourist attractions around.</p> 
+      <p>Jim's Review: 3/10. Have not had a good expereince at my time in the neighbourhood.</p> -->
+    </div>
+    <br><br>
+    <?php 
+      $is_session_valid = 0;
+
+      if (isset($_SESSION['valid'])){
+        if (!empty($_SESSION['valid'])){
+          if ($_SESSION['valid'] == '1'){
+            $is_session_valid = 1;
+          }
+        }
+      }
+
+      if ($is_session_valid == 1){
+      
+    ?>
+    <div class="reviewsite">
+      <form method="post" action="" id = "submitForm" name = "submitForm">
+        <fieldset>
+          <legend>Go ahead! Submit a review.</legend>
+        </fieldset>
+        <div class="submitform">
+          <div class="dataform databox" style="width:30%">
+            <input id="Review" type="text" name = "reviewBox" placeholder="Review" required minlength="6" maxlength="50"/>
+          </div>
+          <div class="dataform databox">
+            <input id="Rating" type="number" step = "any" name = "ratingBox" placeholder="Rating" required min="0" max="10"/>
+          </div>
+          <div class="dataform searchbtnbox01">
+            <input id='id' type ="hidden" name = "idBox" value = "" />
+            <button class="searchbtn01" type="submit">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <?php } else { ?>
+      <div class="reviewsite">
+        <p style = "font-size:80px"> Please login to submit a review. </p>
+      </div>
+    <?php } ?>
 
     <?php
     include 'footer.html';
    ?>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <script>
-      //Populates the individual object html page accordingly
-      // let params = new URLSearchParams(location.search);
-      // var id = params.get('id')
-      var elementsArray = document.getElementsByClassName("Individual");
-      elementsArray[0].innerHTML = 
-      "<div> " +
-        "<h1>" +  "Object " + objectClass.id + "<i>" + " (" + "Object " + objectClass.id + " lat" + "," + "Object " + objectClass.id + " long" + ")" + "</i>" + "</h1>" +
-        "<p>" + "Explanaition for object " + objectClass.id + "</p>" +
-        "<div " + "id=" + "map" + ">" + "</div>" + 
-        " <br>" +
-        "<div " + "class=" + "Reviews>" +
-          "<p>"+ "Andy's Review: 7/10. Love the location, really close to the subway and friendly people." + "</p>" +
-          "<p>" + "Pam's Review: 8/10. Beautiful neighbourhood with multiple tourist attractions around." + "</p>" + 
-          "<p>" + "Jim's Review: 3/10. Have not had a good expereince at my time in the neighbourhood." + "</p>" + 
-        "</div>" +
-      "</div>"
-    </script>
+      function individualMap(){
+        // Constructing the map by passing a DOM location and options object
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 12,
+          center: {lat: parseFloat(object.Lat), lng: parseFloat(object.Long)},
+        });
 
-    <!-- Loading google maps api-->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAm0ZHNBRqGaLQZmcToRBLz4fy_RnJeh_4&callback=individualMap&libraries=&v=weekly" async></script>
+        //default value for individual object page for grades
+        var position = {lat: parseFloat(object.Lat), lng:parseFloat(object.Long)};
+
+        var marker = new google.maps.Marker({
+            position: position,
+            map: map,
+          });
+      }
+    </script>
+    <script>
+      var message = <?php echo json_encode($message); ?>;
+      if(message != ""){
+        alert(message);
+      }
+    </script>
   </body>
 </html>

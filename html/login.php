@@ -16,23 +16,9 @@
     <script src="assets/js/helperFunctions.js"></script>
   </head>
   <body>
-    <nav>
-      <input type="checkbox" id="bars">
-      <label for="bars" class="barsbtn">
-        <i class="fas fa-bars"></i>
-      </label>
-      <label class="logo">Review Freak</label>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="search.html">Search</a></li>
-        <li><a href="submission.php">Submit</a></li>
-        <li><a href="registration.php">Sign Up</a></li>
-        <li><a class="active" href="login.php">Login</a></li>
-        <li><a href="logout.php">Logout</a></li>
-        <li><a href="individual_sample.html">Sample Review</a></li>
-        <li><a href="results_sample.html">Reviews</a></li>
-      </ul>
-    </nav>
+    <?php
+      include 'nav_bar.html';
+    ?>
     <!--It's not a good approch to deal directly with body So, create a wrapper container and make it a full-window height.-->
     <div style="background: url(assets/images/ReviewTimeTransparent.png)" class="min-height bckground-cover"> 
       <div class="container py-5">

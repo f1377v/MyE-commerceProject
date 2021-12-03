@@ -34,10 +34,10 @@ session_start();
                                                             )";
 
                         if ($conne -> query($sql) == TRUE){
-                            $message = 'You have submitted a review successfully. Thanks!';
+                            $message = 'You have submitted a new record successfully. Thanks!';
                             echo "<SCRIPT> 
                                     alert('$message')
-                                    window.location.replace('http://localhost/results_sample.html');
+                                    window.location.replace('./results_sample.php');
                                 </SCRIPT>";
                             die();
                         } else {

@@ -1,3 +1,7 @@
+<?php
+  // get database connection
+  include_once './config/database.php';
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -8,47 +12,39 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <link rel="stylesheet" href="assets/css/style.css">
-    
-    <script>
-      // Initialize and add the map
-      function resultsMap() {
-        var points = [
-          ['<p>Location 1</p> <a href="individual_sample.html?id=1">More Info</a>', 59.9362384705039, 30.19232525792222],
-          ['<p>Location 2</p> <a href="individual_sample.html?id=2">More Info</a>', 59.941412822085645, 30.263564729357767],
-          ['<p>Location 3</p> <a href="individual_sample.html?id=3">More Info</a>', 59.939177197629455, 30.273554411974955]
-        ];
 
-        // Constructing the map by passing a DOM location and options object
-        const map = new google.maps.Map(document.getElementById("map"), {
-          zoom: 12,
-          center: {lat: 59.9362384705039, lng: 30.19232525792222},
-        });
-
-        //Google Maps InfoWindow
-        var infowindow = new google.maps.InfoWindow();
-
-        // close the info window
-        google.maps.event.addListener(map, 'click', function() {
-          infoWindow.close();
-        });
-
-        var markers = [];
-        for (var i = 0; i < points.length; i++) {
-          // The marker
-          markers[i] = new google.maps.Marker({
-            position: {lat: points[i][1], lng: points[i][2]},
-            map: map,
-            details: points[i][0]
-          });
-
-          google.maps.event.addListener(markers[i], 'click', function(){
-            var marker = this;
-            infowindow.setContent( marker.details );
-            infowindow.open(map, marker);
-          });
-        }
+    <?php
+    if($_SERVER["REQUEST_METHOD"] == "GET"){
+      if(!empty($_GET["searchBox"]) && !empty($_GET["Rating"])){
+        $title = $_GET["searchBox"];
+        $rating = (float)$_GET["Rating"];
+        $search = "SELECT * FROM submissionform WHERE Title = '$title' AND Rating >= $rating ";
       }
-    </script>
+      else if(!empty($_GET["searchBox"]) && empty($_GET["Rating"])){
+        $title = $_GET["searchBox"];
+        $search = "SELECT * FROM submissionform WHERE Title = '$title'";
+      }
+      else if(!empty($_GET["Rating"]) && empty($_GET["searchBox"])){
+        $rating = (float)$_GET["Rating"];
+        $search = "SELECT * FROM submissionform WHERE Rating >= $rating ";
+      }
+      else{
+        $search = "SELECT * FROM submissionform";
+      }
+      //Create a database connection
+      $database = new Database();
+      $db = $database->getConnection();
+
+      if($db['status'] == '0'){
+        die("Connection failed while fetching data: ".$db['message']);
+      } else {
+        $conne = $db['connection'];
+
+      //Search for the name and a rating greater than or equal the one inputted
+        $result = $conne->query($search);
+      }
+    }?>
+
 
   </head>
   <body>
@@ -87,26 +83,72 @@
           <th>Location (Coordinates)</th>
           <th>Rating</th>
         </tr>
-        <tr>
-          <td>Mcdonalds</td>
-          <td>(44.3535, 19.018)</td>
-          <td>5/10</td>
-        </tr>
-        <tr>
-          <td>Mcdonalds</td>
-          <td>(18.309, 19.6788)</td>
-          <td>5.5/10</td>
-        </tr>
-        <tr>
-          <td>Mcdonalds</td>
-          <td>(25.8193, 25.3456)</td>
-          <td>5.8/10</td>
-        </tr>
+        <?php
+          if ($result->num_rows > 0){
+            $rows = array();
+            while($row = $result->fetch_assoc()) {
+              array_push($rows, array($row["id"], $row["Title"], $row["Latitude"], $row["Longitude"],))
+              ?>
+                <tr>
+                  <td><a <?php echo 'href="individual_sample.php?id='.$row["id"].'"'; ?>> <?php echo $row["Title"]; ?> </a></td>
+                  <td> <?php echo "(".$row["Latitude"].", ".$row["Longitude"].")"; ?></td>
+                  <td> <?php echo $row["Rating"]; ?></td>
+                </tr>
+      <?php }
+          }
+          else {
+              echo "<td colspan='2'> No data avaiable</td>";
+          }
+        ?>
       </table>
       <br>
-      <div id="map"></div>
+      <script>
+      // Initialize and add the map
+      function resultsMap() {
+        var rows = <?php echo json_encode($rows); ?>;
+        var points = [];
+        for(var i = 0; i < rows.length; i++){
+          var url = '<p>'+ rows[i][1] +'</p> <a href="individual_sample.php?id=' + rows[i][0] + "\">More Info</a>";
+          var lat = parseFloat(rows[i][2]);
+          var long = parseFloat(rows[i][3]);
+          temp = [url, lat, long];
+          points.push(temp);
+        }
+
+        // Constructing the map by passing a DOM location and options object
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 5,
+          center: {lat: 43.25456028411473, lng: -79.92228956622391},
+        });
+
+        //Google Maps InfoWindow
+        var infowindow = new google.maps.InfoWindow();
+
+        // close the info window
+        google.maps.event.addListener(map, 'click', function() {
+          infoWindow.close();
+        });
+
+        var markers = [];
+        for (var i = 0; i < points.length; i++) {
+          // The marker
+          markers[i] = new google.maps.Marker({
+            position: {lat: points[i][1], lng: points[i][2]},
+            map: map,
+            details: points[i][0]
+          });
+
+          google.maps.event.addListener(markers[i], 'click', function(){
+            var marker = this;
+            infowindow.setContent( marker.details );
+            infowindow.open(map, marker);
+          });
+        }
+      }
+    </script>
+
+    <div id="map"></div>
     </div>
-    <div id="test"></div>
     <?php
     include 'footer.html';
    ?>

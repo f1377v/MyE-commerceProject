@@ -12,23 +12,9 @@
     <script src="assets/js/helperFunctions.js"></script>
   </head>
   <body>
-    <nav>
-      <input type="checkbox" id="bars">
-      <label for="bars" class="barsbtn">
-        <i class="fas fa-bars"></i>
-      </label>
-      <label class="logo">Review Freak</label>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a class="active" href="search.html">Search</a></li>
-        <li><a href="submission.php">Submit</a></li>
-        <li><a href="registration.php">Sign Up</a></li>
-        <li><a href="login.php">Login</a></li>
-        <li><a href="logout.php">Logout</a></li>
-        <li><a href="individual_sample.html">Sample Review</a></li>
-        <li><a href="results_sample.html">Reviews</a></li>
-      </ul>
-    </nav>
+    <?php
+      include 'nav_bar.html';
+    ?>
     <!--It's not a good approch to deal directly with body So, create a wrapper container and make it a full-window height.-->
     <div style="background: url(assets/images/ReviewTimeTransparent.png)" class="min-height bckground-cover"> 
       <div class="container py-5">
@@ -40,7 +26,7 @@
     </div>
     <br>
     <div class="reviewsite">
-      <form action="/onSearch.php" method="get">
+      <form action="./results_sample.php" method="get">
         <fieldset>
           <legend>Go ahead! Search it.</legend>
         </fieldset>
@@ -50,18 +36,18 @@
           </div>
           <div class="dataform ratingbox">
           <!-- <input id="rating" type="number" placeholder="Review Rating" /> -->
-            <select class="dataform ratingbox" name=”Rating”>
+            <select class="dataform ratingbox" name="Rating">
               <option value="" disabled selected>Select the rating.</option>
-              <option value=”number1”>1</option>
-              <option value=”number2”>2 </option>
-              <option value=”number3”>3</option>
-              <option value=”number4”>4 </option>
-              <option value=”number5”>5</option>
-              <option value=”number6”>6 </option>
-              <option value=”number7”>7</option>
-              <option value=”number8”>8 </option>
-              <option value=”number9”>9</option>
-              <option value=”number10”>10 </option>
+              <option value="1">1</option>
+              <option value="2">2 </option>
+              <option value="3">3</option>
+              <option value="4">4 </option>
+              <option value="5">5</option>
+              <option value="6">6 </option>
+              <option value="7">7</option>
+              <option value="8">8 </option>
+              <option value="9">9</option>
+              <option value="10">10 </option>
             </select>
           </div>
           <div class="dataform searchbtnbox">

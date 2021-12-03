@@ -115,6 +115,8 @@ a.active,a:hover{
     max-width: 100%;
   }
   .Reviews{
+    margin: auto;
+    width: 60%;
     margin-top: 30px;
   }
   .Reviews p{
