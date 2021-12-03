@@ -14,8 +14,8 @@ session_start();
                     $database = new Database();
                     $db = $database->getConnection();
 
-                    $file_name = $_FILES['image']['name'];   
-		            $temp_file_location = $_FILES['image']['tmp_name']; 
+                    $file_name = $_FILES['img']['name'];   
+		            $temp_file_location = $_FILES['img']['tmp_name']; 
 
                     require 'vendor/autoload.php';
 
