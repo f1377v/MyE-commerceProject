@@ -61,6 +61,22 @@
           <div class="dataform searchbtnbox02">
             <button class="searchbtn02" type="button" onclick="getLocationSubmit()">Locate me</button>
           </div>
+          <div class="dataform databox" style="width: 13%; margin-bottom:30px;">
+            <select class="dataform ratingbox" name=”Rating” required>
+              <option value="" >Select the rating.</option>
+              <option value=”number1”>1</option>
+              <option value=”number2”>2 </option>
+              <option value=”number3”>3</option>
+              <option value=”number4”>4 </option>
+              <option value=”number5”>5</option>
+              <option value=”number6”>6 </option>
+              <option value=”number7”>7</option>
+              <option value=”number8”>8 </option>
+              <option value=”number9”>9</option>
+              <option value=”number10”>10 </option>
+            </select>
+          </div>
+      
           <div class="dataform infobox">
             <input id="description" autocomplete="off"  type="text" placeholder="Description" name = "DescriptionBox" required minlength="6" maxlength="150"/>
           </div>
