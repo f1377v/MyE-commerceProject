@@ -34,7 +34,7 @@
     $response_reviews = array();
     if($result2->num_rows > 0){
       while($row = $result2->fetch_assoc()){
-        array_push($response_reviews, array("Review"=>$row["review"], "Rating"=>$row["rating"]));
+        array_push($response_reviews, array("Review"=>$row["review"], "Rating"=>$row["Rating"]));
       }
     }
 

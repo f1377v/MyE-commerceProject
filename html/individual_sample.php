@@ -19,7 +19,7 @@
               $conne = $db['connection'];
 
               //Inserting review to database
-              $sql = "INSERT INTO reviewform (id, Review, Rating) VALUES ( '$id', '$review', '$rating' )";
+              $sql = "INSERT INTO reviewform (id, review, Rating) VALUES ( '$id', '$review', '$rating' )";
               $conne->query($sql);
 
               if ($conne->query($sql) == TRUE){
