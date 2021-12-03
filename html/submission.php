@@ -44,7 +44,7 @@
       
     ?>
     <div class="reviewsite">
-      <form method="post" action="https://localhost/onSubmission.php" id = "submitForm" name = "submitForm">
+      <form method="post" action="./onSubmission.php" id = "submitForm" name = "submitForm">
         <fieldset>
           <legend>Go ahead! Submit it.</legend>
         </fieldset>
@@ -61,7 +61,7 @@
           <div class="dataform searchbtnbox02">
             <button class="searchbtn02" type="button" onclick="getLocationSubmit()">Locate me</button>
           </div>
-          <div class="dataform databox" style="width: 13%; margin-bottom:30px;">
+          <!--<div class="dataform databox" style="width: 13%; margin-bottom:30px;">
             <select class="dataform ratingbox" name=”Rating” required>
               <option value="" >Select the rating.</option>
               <option value=”number1”>1</option>
@@ -75,7 +75,7 @@
               <option value=”number9”>9</option>
               <option value=”number10”>10 </option>
             </select>
-          </div>
+          </div> --> <!-- this is causing errors -->
       
           <div class="dataform infobox">
             <input id="description" autocomplete="off"  type="text" placeholder="Description" name = "DescriptionBox" required minlength="6" maxlength="150"/>
