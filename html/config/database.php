@@ -1,7 +1,7 @@
 
 <?php
 class Database{
-  private $servername = "13.59.153.66";
+  private $servername = "localhost";
   private $username = "root";
   private $password = "password";
   private $dbname = "phpmyadmin";
