@@ -17,18 +17,23 @@ session_start();
                     $file_name = $_FILES['img']['name'];   
 		            $temp_file_location = $_FILES['img']['tmp_name']; 
 
+                    echo $file_name;
+
                     require 'vendor/autoload.php';
+                    use Aws\S3\S3Client;  
+                    use Aws\Exception\AwsException;
+                    
 
                     $s3 = new Aws\S3\S3Client([
                         'region'  => 'us-east-2',
                         'version' => 'latest',
                         'credentials' => [
-                            'key'    => "AKIA6FNOZOIERVC3CIDY",
-                            'secret' => "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",
+                            'key'    => 'AKIA6FNOZOIERVC3CIDY',
+                            'secret' => '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',
                         ]
                     ]);		
                     
-
+                    
                     $s3->putObject([
                         'Bucket' => 'myecommerceproject',
                         'Key'    => $file_name,
