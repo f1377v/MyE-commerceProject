@@ -11,5 +11,5 @@
 # Link to Github
   https://github.com/f1377v/MyE-commerceProject
 
-\nNote: The key and access code in onSubmission.php are not real, have only added them there to showcase the correct code usage.
+Note: The key and access code in onSubmission.php are not real, have only added them there to showcase the correct code usage.
 The live server however has proper credentials implemented which you test for yourself by uploading an image. 
