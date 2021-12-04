@@ -24,7 +24,6 @@ session_start();
                     
 
                     $s3 = new Aws\S3\S3Client([
-                        'profile' => 'FWebV',
                         'region'  => 'us-east-2',
                         'version' => 'latest',
                         'credentials' => [
