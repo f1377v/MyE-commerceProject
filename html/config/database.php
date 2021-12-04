@@ -3,8 +3,10 @@
 class Database{
   private $servername = "localhost";
   private $username = "root";
-  private $password = "password";
-  private $dbname = "phpmyadmin";
+  //private $password = "password";
+  //private $dbname = "phpmyadmin";
+  private $password = "";
+  private $dbname = "submissions";
   public $conne;
 
   public function getConnection(){

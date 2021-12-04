@@ -20,9 +20,9 @@
 
               //Inserting review to database
               $sql = "INSERT INTO reviewform (id, review, Rating) VALUES ( '$id', '$review', '$rating' )";
-              $conne->query($sql);
+              $result = $conne->query($sql);
 
-              if ($conne->query($sql) == TRUE){
+              if ($result == TRUE){
                 $message = 'You have submitted a new review successfully. Thanks!';
               } else {
                 echo "Error: ".$sql."<br>".$conne->error;
