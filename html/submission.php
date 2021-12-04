@@ -44,7 +44,7 @@
       
     ?>
     <div class="reviewsite">
-      <form method="post" action="./onSubmission.php" id = "submitForm" name = "submitForm">
+      <form method="post" action="./onSubmission.php" id = "submitForm" name = "submitForm" enctype="multipart/form-data">
         <fieldset>
           <legend>Go ahead! Submit it.</legend>
         </fieldset>

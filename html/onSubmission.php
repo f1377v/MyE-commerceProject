@@ -17,32 +17,32 @@ session_start();
                     $file_name = $_FILES['img']['name'];   
 		            $temp_file_location = $_FILES['img']['tmp_name']; 
 
-                    echo $file_name;
+                    
 
-                    // require 'vendor/autoload.php';
+                    require 'vendor/autoload.php';
                     
                     
 
-                    // $s3 = new Aws\S3\S3Client([
-                    //     'profile' => 'FWebV',
-                    //     'region'  => 'us-east-2',
-                    //     'version' => 'latest',
-                    //     'credentials' => [
-                    //         'key'    => 'AKIA6FNOZOIERVC3CIDY',
-                    //         'secret' => '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',
-                    //     ]
-                    // ]);		
+                    $s3 = new Aws\S3\S3Client([
+                        'profile' => 'FWebV',
+                        'region'  => 'us-east-2',
+                        'version' => 'latest',
+                        'credentials' => [
+                            'key'    => 'AKIA6FNOZOIERVC3CIDY',
+                            'secret' => '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',
+                        ]
+                    ]);		
                     
                     
-                    // $s3->putObject([
-                    //     'Bucket' => 'myecommerceproject',
-                    //     'Key'    => $file_name,
-                    //     'SourceFile' => $temp_file_location 
-                    // ]);
+                    $s3->putObject([
+                        'Bucket' => 'myecommerceproject',
+                        'Key'    => $file_name,
+                        'SourceFile' => $temp_file_location 
+                    ]);
 
-                    // $url = $s3->getObjectUrl('myecommerceproject', $file_name);
+                    $url = $s3->getObjectUrl('myecommerceproject', $file_name);
 
-                    // echo $url;
+                    echo $url;
                   
                     if($db['status'] == '0'){
                       die("Connection failed while fetching data: ".$db['message']);
