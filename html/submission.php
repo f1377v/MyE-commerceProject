@@ -44,7 +44,7 @@
       
     ?>
     <div class="reviewsite">
-      <form method="post" action="./onSubmission.php" id = "submitForm" name = "submitForm">
+      <form method="post" action="./onSubmission.php" id = "submitForm" name = "submitForm" enctype="multipart/form-data">
         <fieldset>
           <legend>Go ahead! Submit it.</legend>
         </fieldset>
@@ -62,18 +62,18 @@
             <button class="searchbtn02" type="button" onclick="getLocationSubmit()">Locate me</button>
           </div>
           <!--<div class="dataform databox" style="width: 13%; margin-bottom:30px;">
-            <select class="dataform ratingbox" name=”Rating” required>
+            <select class="dataform ratingbox" name="Rating" required>
               <option value="" >Select the rating.</option>
-              <option value=”number1”>1</option>
-              <option value=”number2”>2 </option>
-              <option value=”number3”>3</option>
-              <option value=”number4”>4 </option>
-              <option value=”number5”>5</option>
-              <option value=”number6”>6 </option>
-              <option value=”number7”>7</option>
-              <option value=”number8”>8 </option>
-              <option value=”number9”>9</option>
-              <option value=”number10”>10 </option>
+              <option value="1">1</option>
+              <option value="2">2 </option>
+              <option value="3">3</option>
+              <option value="4">4 </option>
+              <option value="5">5</option>
+              <option value="6">6 </option>
+              <option value="7">7</option>
+              <option value="8">8 </option>
+              <option value="9">9</option>
+              <option value="10">10 </option>
             </select>
           </div> --> <!-- this is causing errors -->
       

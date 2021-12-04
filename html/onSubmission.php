@@ -13,6 +13,30 @@ session_start();
 
                     $database = new Database();
                     $db = $database->getConnection();
+
+                    $file_name = $_FILES['img']['name'];   
+		            $temp_file_location = $_FILES['img']['tmp_name']; 
+
+                
+                    require 'vendor/autoload.php';
+                    
+                    $s3 = new Aws\S3\S3Client([
+                        'region'  => 'us-east-2',
+                        'version' => 'latest',
+                        'credentials' => [
+                            'key'    => 'AKIA6FNOZOIERVC3CIDY',
+                            'secret' => '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',
+                        ]
+                    ]);		
+                    
+                    
+                    $s3->putObject([
+                        'Bucket' => 'myecommerceproject',
+                        'Key'    => $file_name,
+                        'SourceFile' => $temp_file_location 
+                    ]);
+
+                    $url = $s3->getObjectUrl('myecommerceproject', $file_name);
                   
                     if($db['status'] == '0'){
                       die("Connection failed while fetching data: ".$db['message']);
@@ -21,12 +45,14 @@ session_start();
                         $sql = "INSERT INTO submissionform (Title, 
                                                             Latitude, 
                                                             Longitude, 
-                                                            Description) 
+                                                            Description,
+                                                            ImgAddress) 
                                                             VALUES 
                                                             ('$titleName',
                                                             '$LatitudeText',
                                                             '$LongitudeText',
-                                                            '$descriptionText'
+                                                            '$descriptionText',
+                                                            '$url'
                                                             )";
 
                         if ($conne -> query($sql) == TRUE){
