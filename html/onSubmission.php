@@ -17,12 +17,9 @@ session_start();
                     $file_name = $_FILES['img']['name'];   
 		            $temp_file_location = $_FILES['img']['tmp_name']; 
 
-                    
-
+                
                     require 'vendor/autoload.php';
                     
-                    
-
                     $s3 = new Aws\S3\S3Client([
                         'region'  => 'us-east-2',
                         'version' => 'latest',
@@ -40,8 +37,6 @@ session_start();
                     ]);
 
                     $url = $s3->getObjectUrl('myecommerceproject', $file_name);
-
-                    echo $url;
                   
                     if($db['status'] == '0'){
                       die("Connection failed while fetching data: ".$db['message']);
@@ -50,12 +45,14 @@ session_start();
                         $sql = "INSERT INTO submissionform (Title, 
                                                             Latitude, 
                                                             Longitude, 
-                                                            Description) 
+                                                            Description,
+                                                            ImgAddress) 
                                                             VALUES 
                                                             ('$titleName',
                                                             '$LatitudeText',
                                                             '$LongitudeText',
-                                                            '$descriptionText'
+                                                            '$descriptionText',
+                                                            '$url'
                                                             )";
 
                         if ($conne -> query($sql) == TRUE){
