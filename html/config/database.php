@@ -6,7 +6,8 @@ class Database{
   private $password = "password";
   private $dbname = "phpmyadmin";
   public $conne;
-
+  
+  //Comments
   public function getConnection(){
     $this->conne = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
 
